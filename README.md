@@ -1,5 +1,6 @@
 # WordPress
 
+### 开发环境，可以使用Homestead
 
 ### Here is the correct file permissions for Wordpress:  
 ````
