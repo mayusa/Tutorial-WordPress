@@ -1,8 +1,8 @@
 # WordPress
 
-### 开发环境，可以使用Homestead
+### 1. 开发环境，可以使用Homestead
 
-### Here is the correct file permissions for Wordpress:  
+### 2. Here is the correct file permissions for Wordpress:  
 ````
 chown www-data:www-data -R *          # Let apache be owner
 find . -type d -exec chmod 755 {} \;  # Change directory permissions rwxr-xr-x
