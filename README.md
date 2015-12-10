@@ -1,6 +1,6 @@
 # WordPress
 
-### 1. 开发环境，可以使用Homestead
+### 1. 开发环境，可以使用Homestead(Vagrant)
 
 ### 2. Here is the correct file permissions for Wordpress:  
 ````
