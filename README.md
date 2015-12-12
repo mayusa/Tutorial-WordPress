@@ -13,7 +13,7 @@ sudo find . -type f -exec chmod 644 {} \;  # Change file permissions rw-r--r--
 [5 Simple Steps to Configure WordPress To Use Permalinks On An Ubuntu Server](http://mixeduperic.com/ubuntu/5-simple-steps-to-configure-wordpress-to-use-permalinks-on-an-ubuntu-server.html)
 
 
-### 配置EC2：
+### 配置EC2(Ubuntu)：
 -----------------------------------
 SETUP: WP + Apache2 + MySQL
 -----------------------------------
