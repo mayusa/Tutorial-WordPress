@@ -11,3 +11,71 @@ sudo find . -type f -exec chmod 644 {} \;  # Change file permissions rw-r--r--
   
 ### 3. 伪链接的配置    
 [5 Simple Steps to Configure WordPress To Use Permalinks On An Ubuntu Server](http://mixeduperic.com/ubuntu/5-simple-steps-to-configure-wordpress-to-use-permalinks-on-an-ubuntu-server.html)
+
+
+### 配置EC2：
+-----------------------------------
+SETUP: WP + Apache2 + MySQL
+-----------------------------------
+
+ // install 
+ ````  
+sudo apt-get update --fix-missing
+sudo apt-get install apache2
+sudo add-apt-repository ppa:ondrej/php5
+sudo apt-get update
+
+sudo apt-get install php5 libapache2-mod-php5
+php --version
+sudo apt-get install git-core php5-mcrypt mysql-server
+````  
+// composer  
+````  
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+
+sudo apt-get install php5-curl php5-mysql
+````  
+// source code
+
+########################################
+### git clone......
+########################################
+
+// Permalinks permission  
+````  
+sudo touch .htaccess
+sudo chown www-data:www-data .htaccess 
+sudo chmod 664 .htaccess 
+sudo service apache2 restart
+````  
+// folder permission  
+````  
+sudo chown www-data:www-data -R *
+sudo find . -type d -exec chmod 755 {} \;
+sudo find . -type f -exec chmod 644 {} \;
+````  
+// visual host config  
+````
+sudo nano /etc/apache2/sites-available/000-default.conf
+````    
+  
+````  
+<VirtualHost *:80>
+    ServerAdmin admin@example.com
+    ServerName hostname.com
+    ServerAlias www.hostname.com
+    DocumentRoot /var/www/www.hostname.com
+        <Directory />
+                AllowOverride All
+        </Directory>
+        <Directory var/www/www.hostname.com/>
+                AllowOverride All
+        </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+````  
+
+
+
