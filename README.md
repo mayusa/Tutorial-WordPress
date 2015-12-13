@@ -10,7 +10,8 @@ sudo find . -type f -exec chmod 644 {} \;  # Change file permissions rw-r--r--
 ````
   
 ### 3. 伪链接的配置    
-重要的是，记得touch .htaccess ，设置chmod 664 ,空文件也没问题。
+重要的是，记得touch .htaccess ，设置chmod 664 ,空文件也没问题。   
+
 [5 Simple Steps to Configure WordPress To Use Permalinks On An Ubuntu Server](http://mixeduperic.com/ubuntu/5-simple-steps-to-configure-wordpress-to-use-permalinks-on-an-ubuntu-server.html)
 
 
