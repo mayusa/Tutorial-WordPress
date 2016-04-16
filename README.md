@@ -44,22 +44,23 @@ sudo apt-get install php5-curl php5-mysql
 ### git clone......
 ########################################
 
-// Permalinks permission  
-````  
-sudo touch .htaccess
-sudo chown www-data:www-data .htaccess 
-sudo chmod 664 .htaccess 
-sudo service apache2 restart
+// Permalinks permission   
+````   
+sudo touch .htaccess  
+sudo chown www-data:www-data .htaccess  
+sudo chmod 664 .htaccess  
+sudo a2enmod rewrite// enabling mod_write in the Apache2 server  
+sudo service apache2 restart  
 ````  
 // folder permission  
 ````  
 sudo chown www-data:www-data -R *
 sudo find . -type d -exec chmod 755 {} \;
 sudo find . -type f -exec chmod 644 {} \;
-````  
-// visual host config  
+````   
+// visual host config   
 ````
-sudo nano /etc/apache2/sites-available/000-default.conf
+sudo nano /etc/apache2/sites-available/000-default.conf  
 ````    
   
 ````  
@@ -91,6 +92,26 @@ upload_max_filesize = 2M
 memory_limit = 128M   
 post_max_size = 8M    
 
+
+### Permalink Settings Ubuntu14.04 无效的解决方法  
+-----------------------------------   
+环境： Ubuntu14.04 + Apache2  
+````  
+$ sudo nano /etc/apache2/sites-enabled/000-default.conf   
+
+<VirtualHost *:80>
+    ServerName hostname.com
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/hostname.com  
+    <Directory "/var/www/hostname.com">  
+        AllowOverride All  
+        Options -Indexes   
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>  
+````  
+   
 ---- 
 ashucn@gmail.com  
 
