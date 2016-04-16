@@ -77,7 +77,22 @@ sudo nano /etc/apache2/sites-available/000-default.conf
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-````  
+````   
+  
+
+### Ubuntu中增加apache上传文件大小限制：
+-----------------------------------   
+
+````
+sudo nano /etc/php5/apache2/php.ini  
+````    
+
+upload_max_filesize = 2M 
+memory_limit = 128M 
+post_max_size = 8M  
+
+---- 
+ashucn@gmail.com  
 
 
 
