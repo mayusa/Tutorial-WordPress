@@ -9,13 +9,9 @@ sudo find . -type d -exec chmod 755 {} \;  # Change directory permissions rwxr-x
 sudo find . -type f -exec chmod 644 {} \;  # Change file permissions rw-r--r--
 ````
   
-### 3. 伪链接的配置    
-重要的是，记得touch .htaccess ，设置chmod 664 ,空文件也没问题。   
-
-[5 Simple Steps to Configure WordPress To Use Permalinks On An Ubuntu Server](http://mixeduperic.com/ubuntu/5-simple-steps-to-configure-wordpress-to-use-permalinks-on-an-ubuntu-server.html)
 
 
-### 配置EC2(Ubuntu)：
+### 3. 配置EC2(Ubuntu)：
 -----------------------------------
 SETUP: WP + Apache2 + MySQL
 -----------------------------------
@@ -44,7 +40,8 @@ sudo apt-get install php5-curl php5-mysql
 ### git clone......
 ########################################
 
-// Permalinks permission   
+// Permalinks permission      
+// 重要的是，记得touch .htaccess ，设置chmod 664 ,空文件也没问题。     
 ````   
 sudo touch .htaccess  
 sudo chown www-data:www-data .htaccess  
@@ -68,20 +65,18 @@ sudo nano /etc/apache2/sites-available/000-default.conf
     ServerAdmin admin@example.com
     ServerName hostname.com
     ServerAlias www.hostname.com
-    DocumentRoot /var/www/www.hostname.com
-        <Directory />
-                AllowOverride All
-        </Directory>
-        <Directory var/www/www.hostname.com/>
-                AllowOverride All
-        </Directory>
+    DocumentRoot /var/www/hostname.com
+    <Directory "/var/www/hostname.com">  
+        AllowOverride All  
+        Options -Indexes   
+    </Directory>
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ````   
   
 
-### Ubuntu中增加apache上传文件大小限制：
+### 4. Ubuntu中增加apache上传文件大小限制：
 -----------------------------------   
 
 ````
@@ -92,34 +87,8 @@ upload_max_filesize = 2M
 memory_limit = 128M   
 post_max_size = 8M    
 
-
-### Permalink Settings Ubuntu14.04 无效的解决方法  
------------------------------------    
-环境： Ubuntu14.04 + Apache2   
-
-1. sudo touch .htaccess  
-2. sudo chown -v :www-data .htaccess  
-3. sudo chmod -v 664 .htaccess  
-4. sudo a2enmod rewrite  
-5. sudo service apache2 restart  
-6.   
-  
-````   
-$ sudo nano /etc/apache2/sites-enabled/000-default.conf   
-
-<VirtualHost *:80>
-    ServerName hostname.com
-    ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/hostname.com  
-    <Directory "/var/www/hostname.com">  
-        AllowOverride All  
-        Options -Indexes   
-    </Directory>
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>  
-````   
-    
+----  
+to be continus    
 ---- 
 ashucn@gmail.com  
 
