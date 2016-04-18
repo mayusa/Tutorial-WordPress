@@ -94,9 +94,17 @@ post_max_size = 8M
 
 
 ### Permalink Settings Ubuntu14.04 无效的解决方法  
------------------------------------   
-环境： Ubuntu14.04 + Apache2  
-````  
+-----------------------------------    
+环境： Ubuntu14.04 + Apache2   
+
+1. sudo touch .htaccess  
+2. sudo chown -v :www-data .htaccess  
+3. sudo chmod -v 664 .htaccess  
+4. sudo a2enmod rewrite  
+5. sudo service apache2 restart  
+6.   
+  
+````   
 $ sudo nano /etc/apache2/sites-enabled/000-default.conf   
 
 <VirtualHost *:80>
@@ -110,8 +118,8 @@ $ sudo nano /etc/apache2/sites-enabled/000-default.conf
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>  
-````  
-   
+````   
+    
 ---- 
 ashucn@gmail.com  
 
