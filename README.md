@@ -87,6 +87,9 @@ upload_max_filesize = 2M
 memory_limit = 128M   
 post_max_size = 8M    
 
+命令行执行:    
+> sudo service php-fpm restart
+
 ----  
 to be continus    
 ---- 
