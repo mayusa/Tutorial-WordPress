@@ -3,6 +3,7 @@
 ### 1. 开发环境，可以使用Homestead(Vagrant)
 
 ### 2. Here is the correct file permissions for Wordpress:  
+  
 ````
 sudo chown www-data:www-data -R *          # Let apache be owner
 sudo find . -type d -exec chmod 755 {} \;  # Change directory permissions rwxr-xr-x
@@ -91,7 +92,17 @@ post_max_size = 8M
 > sudo service php-fpm restart
 
 ----  
-to be continus    
+
+
+
+### 5. 关于WP备份
+-----------------------------------   
+1. 使用数据库导入导出比较安全
+2. 如果是展示型网站，尽量不要使用aws s3,直接上传到wp默认的 uploads
+
+
+
+to be continus    
 ---- 
 ashucn@gmail.com  
 
