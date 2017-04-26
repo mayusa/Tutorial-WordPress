@@ -78,8 +78,8 @@ sudo nano /etc/apache2/sites-available/000-default.conf
   
 
 ### 4. Ubuntu中增加apache上传文件大小限制：
------------------------------------   
-
+-----------------------------------   
+方法一：   
 ````
 sudo nano /etc/php5/apache2/php.ini  
 ````    
@@ -91,7 +91,18 @@ post_max_size = 8M
 命令行执行:    
 > sudo service php-fpm restart
 
-----  
+
+方法二：  
+在.htaccess头部添加：    
+````  
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+
+php_value max_execution_time 300
+php_value max_input_vars 3000
+````  
+  
+---- 
 
 
 
